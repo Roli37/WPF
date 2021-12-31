@@ -1,0 +1,25 @@
+﻿<Window x:Class="WPF.SecondWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        xmlns:model="clr-namespace:WPF.Models"
+        mc:Ignorable="d"
+        Title="SecondWindow" Height="450" Width="300" MinHeight="450" MinWidth="250">
+    <Window.DataContext>
+        <model:SecondWindowViewModel/>
+    </Window.DataContext>
+    <StackPanel>
+        <Label Content="Új karbantartás felvétele" Name="label1" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Szerelő neve:"/>
+        <ComboBox Name="cb1"/>
+        <Label Content="Megrendelő neve:"/>
+        <ComboBox Name="cb2"/>
+        <Label Content="Karbantartás dátuma:"/>
+        <Calendar Name="calendar1"/>
+        <Label Content="Munka ideje órákban:"/>
+        <ComboBox Name="cb3"/>
+        <Button Content="Küldés" Name="btn1" Click="btn1_Click" Height="30" Margin="0,10,0,0" />
+    </StackPanel>
+</Window>

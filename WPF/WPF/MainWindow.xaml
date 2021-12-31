@@ -1,0 +1,65 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        xmlns:model="clr-namespace:WPF.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="470" MinHeight="470" MaxHeight="550" Width="1200" MinWidth="1200" MaxWidth="1500">
+    <Window.DataContext>
+        <model:MainWindowViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <Label Content="Karbantartások" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Name="label1"/>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <Button Click="btn_megjelenit_Click" Content="Karbantartások megjelenítése" Name="btn_megjelenit" Height="70" Margin="5" Background="Silver"/>
+                <Button Click="btn_exportal_Click" Content="Karbantartások exportálása" Name="btn_exportal" Height="70" Margin="5" Background="DarkGray"/>
+                <StackPanel Height="auto" Margin="5" Background="Gray">
+                    <Label Content="Összetett keresés" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Szerelő neve:" Margin="2"/>
+                            <TextBox Grid.Column="2" Margin="2" Name="tb_nev"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Minimum ár:" Margin="2"/>
+                            <TextBox Grid.Column="2" Margin="2" Name="tb_ar"/>
+                        </Grid>
+                    </StackPanel>
+                    <Button Click="btn_szures_Click" Content="Keresés" Name="btn_szures" Background="DimGray"/>
+                </StackPanel>
+                <Button Click="btn_ujadat_Click" Content="Új karbantartás felvétele" Name="btn_ujadat" Height="70" Margin="5" Background="DimGray"/>
+            </StackPanel>
+            <Grid Grid.Column="2">
+                <DataGrid Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False" Name="dataGrid1" MaxHeight="330"  VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Megrendelő neve" Binding="{Binding Megrendelo_neve}" Width="*"/>
+                        <DataGridTextColumn Header="Megrendelő címe" Binding="{Binding Megrendelo_cime}" Width="auto"/>
+                        <DataGridTextColumn Header="Munka típusa" Binding="{Binding Munka_tipusa}" Width="*"/>
+                        <DataGridTextColumn Header="Megrendelő telefonszáma" Binding="{Binding Megrendelo_telefonszama}" Width="auto"/>
+                        <DataGridTextColumn Header="Szerelő neve" Binding="{Binding Szerelo_neve}" Width="*"/>
+                        <DataGridTextColumn Header="Karbantartás dátuma" Binding="{Binding Karbantartas_datuma, StringFormat=\{0:yyyy.MM.dd\}}" Width="auto"/>
+                        <DataGridTextColumn Header="Karbantartás ára" Binding="{Binding Karbantartas_ara}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</Window>
